@@ -32,10 +32,39 @@ function glowframe_setup() {
 add_action( 'after_setup_theme', 'glowframe_setup' );
 
 function glowframe_assets() {
-	wp_enqueue_style( 'gf-google-fonts', 'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap', array(), null );
-	wp_enqueue_style( 'glowframe-style', get_stylesheet_uri(), array(), '1.0' );
-	wp_enqueue_script( 'glowframe-script', get_template_directory_uri() . '/assets/js/script.js', array(), '1.0', true );
+
+    wp_enqueue_style(
+        'gf-google-fonts',
+        'https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap',
+        array(),
+        null
+    );
+
+    wp_enqueue_style(
+        'glowframe-style',
+        get_stylesheet_uri(),
+        array(),
+        '1.0'
+    );
+
+    wp_enqueue_script(
+        'glowframe-script',
+        get_template_directory_uri() . '/assets/js/script.js',
+        array(),
+        '1.0',
+        true
+    );
+
+    // 👇 এই অংশটি নতুন যোগ করবেন
+    wp_localize_script(
+        'glowframe-script',
+        'gf_ajax',
+        array(
+            'ajax_url' => admin_url( 'admin-ajax.php' )
+        )
+    );
 }
+
 add_action( 'wp_enqueue_scripts', 'glowframe_assets' );
 
 /* ---------------------------------------------------------
