@@ -398,3 +398,20 @@ function gf_live_search(){
     wp_die();
 
 }
+add_action('wp_enqueue_scripts',function(){
+
+wp_localize_script(
+
+'glowframe-script',
+
+'gf_ajax',
+
+array(
+
+'ajax_url'=>admin_url('admin-ajax.php')
+
+)
+
+);
+
+});
