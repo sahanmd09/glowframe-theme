@@ -344,3 +344,57 @@ function glowframe_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'glowframe_widgets_init' );
+/* ===============================
+   Glow Frame AJAX Search
+================================ */
+
+add_action('wp_ajax_gf_live_search', 'gf_live_search');
+add_action('wp_ajax_nopriv_gf_live_search', 'gf_live_search');
+
+function gf_live_search(){
+
+    $keyword = sanitize_text_field($_POST['keyword']);
+
+    $query = new WP_Query(array(
+        'post_type' => 'gf_product',
+        'posts_per_page' => 8,
+        's' => $keyword
+    ));
+
+    if($query->have_posts()){
+
+        while($query->have_posts()){
+
+            $query->the_post();
+
+            ?>
+
+            <a class="live-search-item" href="<?php the_permalink();?>">
+
+                <div class="live-thumb">
+
+                <?php the_post_thumbnail('thumbnail');?>
+
+                </div>
+
+                <div class="live-content">
+
+                    <strong><?php the_title();?></strong>
+
+                </div>
+
+            </a>
+
+            <?php
+
+        }
+
+    }else{
+
+        echo '<div class="no-result">No Product Found</div>';
+
+    }
+
+    wp_die();
+
+}
