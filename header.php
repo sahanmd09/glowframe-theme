@@ -1,32 +1,109 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
-<!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<?php wp_head(); ?>
-</head>
-<body <?php body_class(); ?>>
-<?php wp_body_open(); ?>
+<header class="site-header">
 
-<header>
-  <div class="topbar bn">সারা বাংলাদেশে ক্যাশ অন ডেলিভারি 🚚 &nbsp;•&nbsp; কাস্টম ছবি দিয়ে <b>৪৮ ঘণ্টায়</b> রেডি</div>
-  <div class="nav">
-    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-      <?php if ( has_custom_logo() ) : the_custom_logo(); else : ?>
-        Glow<span>Frame</span>
-      <?php endif; ?>
-    </a>
-    <?php
-    wp_nav_menu( array(
-      'theme_location' => 'primary',
-      'fallback_cb'    => 'glowframe_default_menu',
-      'items_wrap'     => '<ul id="%1$s" class="nav-links">%3$s</ul>',
-    ) );
-    ?>
-    <div class="nav-actions">
-      <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="icon-btn" title="Shop">🔍</a>
-      <a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>" class="btn btn-primary btn-sm">অর্ডার করুন</a>
+    <!-- Top Announcement -->
+    <div class="topbar">
+        <div class="container topbar-inner">
+
+            <div class="top-left">
+                🚚 সারা বাংলাদেশে ডেলিভারি
+            </div>
+
+            <div class="top-center">
+                ⭐ ৫,০০০+ Happy Customers
+            </div>
+
+            <div class="top-right">
+                📞 01871698464
+            </div>
+
+        </div>
     </div>
-  </div>
+
+    <!-- Main Header -->
+    <div class="header-main">
+
+        <div class="container header-row">
+
+            <!-- Logo -->
+            <div class="header-logo">
+
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+
+                    <?php
+                    if(has_custom_logo()){
+                        the_custom_logo();
+                    }else{
+                        ?>
+                        <span class="logo-text">
+                            Glow<span>Frame</span>
+                        </span>
+
+                        <small class="logo-tagline">
+                            Personalized Gifts
+                        </small>
+
+                        <?php
+                    }
+                    ?>
+
+                </a>
+
+            </div>
+
+            <!-- Menu -->
+
+            <nav class="main-nav">
+
+                <?php
+
+                wp_nav_menu(array(
+
+                    'theme_location'=>'primary',
+
+                    'fallback_cb'=>'glowframe_default_menu',
+
+                    'menu_class'=>'nav-links'
+
+                ));
+
+                ?>
+
+            </nav>
+
+            <!-- Right Icons -->
+
+            <div class="header-actions">
+
+                <a href="#" class="header-icon search-btn">
+                    🔍
+                </a>
+
+                <a href="#" class="header-icon favorite-btn">
+                    ❤️
+                    <span class="count">0</span>
+                </a>
+
+                <a href="<?php echo esc_url(home_url('/checkout')); ?>" class="header-icon">
+                    🛒
+                    <span class="count">0</span>
+                </a>
+
+                <a href="<?php echo esc_url(home_url('/shop')); ?>" class="btn btn-primary">
+                    Shop Now
+                </a>
+
+            </div>
+
+            <!-- Mobile Button -->
+
+            <button class="mobile-toggle">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
 </header>
