@@ -75,7 +75,19 @@
             <div class="header-actions">
 
                 <a href="#" class="header-icon search-btn">
-                    🔍
+                    <div class="live-search">
+
+<input
+
+type="text"
+
+id="gf-search"
+
+placeholder="Search products...">
+
+<div id="gf-search-result"></div>
+
+</div>
                 </a>
 
                 <a href="#" class="header-icon favorite-btn">
